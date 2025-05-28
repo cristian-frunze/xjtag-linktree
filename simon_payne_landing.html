@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simon Payne - CEO & Technology Leader</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: white;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #FFD700, transparent);
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #FFD700;
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .profile-info h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .profile-info .title {
+            font-size: 1.2rem;
+            color: #FFD700;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+
+        .profile-info .companies {
+            font-size: 0.95rem;
+            color: #cccccc;
+            line-height: 1.4;
+        }
+
+        .bio {
+            background: rgba(255, 215, 0, 0.1);
+            border-left: 4px solid #FFD700;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #e0e0e0;
+        }
+
+        .links-section {
+            display: grid;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #FFD700;
+            margin: 2rem 0 1rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background: #FFD700;
+        }
+
+        .link-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .link-card:hover::before {
+            left: 100%;
+        }
+
+        .link-card:hover {
+            border-color: #FFD700;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.2);
+        }
+
+        .link-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .link-icon {
+            width: 24px;
+            height: 24px;
+            fill: #FFD700;
+        }
+
+        .link-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #FFD700;
+        }
+
+        .link-description {
+            color: #cccccc;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .contact-item {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .contact-item h4 {
+            color: #FFD700;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item p {
+            color: #cccccc;
+            font-size: 0.9rem;
+        }
+
+        .contact-link {
+            color: #FFD700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: #FFA500;
+            text-decoration: underline;
+        }
+
+        .companies-structure {
+            margin-bottom: 2rem;
+        }
+
+        .geometric-decoration {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.1;
+        }
+
+        .decoration-1 {
+            top: 10%;
+            right: 5%;
+            width: 60px;
+            height: 60px;
+            border: 2px solid #FFD700;
+            transform: rotate(45deg);
+        }
+
+        .decoration-2 {
+            bottom: 10%;
+            left: 5%;
+            width: 0;
+            height: 0;
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+            border-bottom: 52px solid #FFD700;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            color: #888;
+        }
+
+        .contact-section {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 50%;
+            color: #FFD700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: rgba(255, 215, 0, 0.2);
+            border-color: #FFD700;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.2);
+        }
+
+        .social-link svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .position-badge {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #000;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: auto;
+        }
+
+        .link-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .parent-company {
+            border: 2px solid #FFD700;
+            background: rgba(255, 215, 0, 0.15);
+        }
+
+        .subsidiary-companies {
+            margin-left: 2rem;
+            margin-top: 1rem;
+            position: relative;
+        }
+
+        .subsidiary-companies::before {
+            content: '';
+            position: absolute;
+            left: -1rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #FFD700, rgba(255, 215, 0, 0.3));
+        }
+
+        .subsidiary {
+            border-left: 3px solid #FFD700;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .subsidiary::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 50%;
+            width: 1rem;
+            height: 2px;
+            background: #FFD700;
+        }
+
+        @media (max-width: 600px) {
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-info h1 {
+                font-size: 2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                gap: 1rem;
+            }
+
+            .social-link {
+                width: 44px;
+                height: 44px;
+            }
+
+            .social-link svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .position-badge {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.5rem;
+                margin-left: 0;
+                margin-top: 0.5rem;
+            }
+
+            .link-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+
+        @media (max-width: 900px) and (min-width: 601px) {
+            .contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #FFD700;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #cccccc;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="geometric-decoration decoration-1"></div>
+    <div class="geometric-decoration decoration-2"></div>
+    
+    <div class="container">
+        <header class="header">
+            <div class="profile-section">
+                <img src="https://media.licdn.com/dms/image/v2/C4D03AQGBGuK5PQWPXw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1615218825905?e=1753920000&v=beta&t=uzaWH6ktkJ9YgmH1ZAPW3v4GhDIPUrR8RN1Z24nsK1Y" alt="Simon Payne" class="profile-image">
+                <div class="profile-info">
+                    <h1>SIMON PAYNE</h1>
+                    <div class="title">CEO & Technology Leader</div>
+                    <div class="companies">
+                        XJTAG • Cambridge Technology Group • Cambridge Technology Consultants
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bio">
+                "Leading boundary scan innovation for over 20 years. Helping engineers worldwide debug, test, and program electronic boards faster and more efficiently."
+            </div>
+
+            <div class="stats-section">
+                <div class="stat-item">
+                    <div class="stat-number">22+</div>
+                    <div class="stat-label">Years CEO</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Case Studies</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Companies Led</div>
+                </div>
+            </div>
+        </header>
+
+        <main class="links-section">
+            <h2 class="section-title">Companies & Leadership</h2>
+            
+            <a href="https://www.cambridgetechgroup.com" class="link-card" target="_blank">
+                <div class="link-header">
+                    <svg class="link-icon" viewBox="0 0 24 24">
+                        <path d="M20 6h-2.18c.11-.31.18-.65.18-1a2.996 2.996 0 0 0-5.5-1.65l-.5.67-.5-.68C10.96 2.54 10 2 10 2 10 2 10 2 10 2s0 0 0 0c-1.66 0-3 1.34-3 3 0 .35.07.69.18 1H4c-1.11 0-2 .89-2 2v11c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2z"/>
+                    </svg>
+                    <span class="link-title">Cambridge Technology Group</span>
+                    <span class="position-badge">CEO (2003 - Present)</span>
+                </div>
+                <div class="link-description">Parent company and technology innovation hub. Leading advanced electronics solutions and R&D initiatives.</div>
+            </a>
+
+            <a href="https://www.xjtag.com" class="link-card" target="_blank">
+                <div class="link-header">
+                    <svg class="link-icon" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                    <span class="link-title">XJTAG</span>
+                    <span class="position-badge">CEO (2003 - Present)</span>
+                </div>
+                <div class="link-description">World-leading JTAG boundary scan solutions for testing, debugging, and programming electronic boards.</div>
+            </a>
+
+            <a href="https://www.camtechconsultants.com" class="link-card" target="_blank">
+                <div class="link-header">
+                    <svg class="link-icon" viewBox="0 0 24 24">
+                        <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-1 16H9V7h9v14z"/>
+                    </svg>
+                    <span class="link-title">Cambridge Technology Consultants</span>
+                    <span class="position-badge">CEO (2003 - Present)</span>
+                </div>
+                <div class="link-description">Strategic technology consulting services for electronics and engineering companies.</div>
+            </a>
+
+            <h2 class="section-title">Content</h2>
+
+            <a href="https://www.xjtag.com/about-jtag/what-is-jtag/" class="link-card" target="_blank">
+                <div class="link-header">
+                    <svg class="link-icon" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <span class="link-title">What is JTAG?</span>
+                </div>
+                <div class="link-description">Comprehensive guide explaining JTAG technology and boundary scan testing fundamentals for engineers.</div>
+            </a>
+
+            <a href="https://www.xjtag.com/about-jtag/jtag-high-level-guide/" class="link-card" target="_blank">
+                <div class="link-header">
+                    <svg class="link-icon" viewBox="0 0 24 24">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                    </svg>
+                    <span class="link-title">High-Level Guide to JTAG</span>
+                </div>
+                <div class="link-description">Advanced overview of JTAG implementation, connection testing, and in-system programming capabilities.</div>
+            </a>
+
+            <a href="https://www.xjtag.com/case-studies/" class="link-card" target="_blank">
+                <div class="link-header">
+                    <svg class="link-icon" viewBox="0 0 24 24">
+                        <path d="M9 11H7v6h2v-6zm4 0h-2v6h2v-6zm4 0h-2v6h2v-6zm2.5-9H19v2h-2.5zM13 3.5h2V1h-2v2.5zm-7 0h2V1H6v2.5zm4.5 16h2v2.5h-2V19.5zm3.5-16h2V1h-2v2.5z"/>
+                    </svg>
+                    <span class="link-title">100+ Client Success Stories</span>
+                </div>
+                <div class="link-description">Case studies from global technology leaders including ARM, Thales, Imagination Technologies, and many others.</div>
+            </a>
+
+            <a href="https://www.xjtag.com/company/events/webinars/" class="link-card" target="_blank">
+                <div class="link-header">
+                    <svg class="link-icon" viewBox="0 0 24 24">
+                        <path d="M21 3H3c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.11-.89-2-2-2zm0 12H3V5h18v10z"/>
+                    </svg>
+                    <span class="link-title">Expert Webinars & Training</span>
+                </div>
+                <div class="link-description">Interactive hands-on JTAG training sessions and technical webinars. Free 30-day trials available.</div>
+            </a>
+
+            <h2 class="section-title">Professional Network</h2>
+
+            <a href="https://www.linkedin.com/in/simon-payne-5b38a33/" class="link-card" target="_blank">
+                <div class="link-header">
+                    <svg class="link-icon" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                    <span class="link-title">LinkedIn Profile</span>
+                </div>
+                <div class="link-description">Connect with Simon on LinkedIn. 22,740+ followers, industry insights, and professional updates.</div>
+            </a>
+
+            <h2 class="section-title">Contact Information</h2>
+
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <h4>📧 Email</h4>
+                    <p><a href="mailto:simon.payne@cambridgetechgroup.com" class="contact-link">simon.payne@cambridgetechgroup.com</a></p>
+                </div>
+                
+                <div class="contact-item">
+                    <h4>🏢 Address</h4>
+                    <p>CamTech House<br>137 Cambridge Road<br>Milton, Cambridge CB24 6AZ<br>United Kingdom</p>
+                </div>
+                
+                <div class="contact-item">
+                    <h4>🌐 Websites</h4>
+                    <p>
+                        <a href="https://www.xjtag.com" target="_blank" class="contact-link">www.xjtag.com</a><br>
+                        <a href="https://www.cambridgetechgroup.com" target="_blank" class="contact-link">www.cambridgetechgroup.com</a><br>
+                        <a href="https://www.camtechconsultants.com" target="_blank" class="contact-link">www.camtechconsultants.com</a>
+                    </p>
+                </div>
+            </div>
+
+            <h2 class="section-title">Get Started with XJTAG</h2>
+            
+            <a href="https://www.xjtag.com/free-jtag-evaluation/" class="link-card" target="_blank">
+                <div class="link-header">
+                    <svg class="link-icon" viewBox="0 0 24 24">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span class="link-title">Free 30-Day JTAG Trial</span>
+                </div>
+                <div class="link-description">Experience XJTAG's full-featured boundary scan tools with complimentary setup for your first board. No obligations.</div>
+            </a>
+        </main>
+
+        <div class="contact-section">
+            <h2 class="section-title">XJTAG Connect</h2>
+            <div class="social-links">
+                <a href="mailto:info@xjtag.com" class="social-link" title="Email XJTAG">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/company/xjtag/" class="social-link" target="_blank" title="XJTAG LinkedIn">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+                <a href="https://www.facebook.com/XJTAG" class="social-link" target="_blank" title="XJTAG Facebook">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="currentColor" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+                <a href="https://www.youtube.com/user/XJTAGBoundaryScan" class="social-link" target="_blank" title="XJTAG YouTube">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                </a>
+                <a href="https://x.com/xjtag" class="social-link" target="_blank" title="XJTAG X/Twitter">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+            </div>
+
+        <footer class="footer">
+            <p>© 2025 Simon Payne. Leading boundary scan innovation for over two decades.</p>
+        </footer>
+    </div>
+</body>
+</html>
